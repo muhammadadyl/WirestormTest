@@ -1,6 +1,9 @@
 package com.example.adeelwirestorm.models;
 
-public class Person {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Person  implements Serializable {
 	private String Name;
 	private String Position;
 	private String SmallPicUrl;

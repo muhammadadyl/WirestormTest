@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
+import com.example.adeelwirestorm.R;
 import com.example.adeelwirestorm.helpers.ImageDownloader.ImageExtender;
 import com.example.adeelwirestorm.models.Person;
 

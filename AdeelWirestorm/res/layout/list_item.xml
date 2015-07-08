@@ -10,7 +10,8 @@
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:layout_margin="10dp"
-        android:background="#ffcccccc" />
+        android:background="#ffcccccc"
+        android:contentDescription="" />
 
     <TextView
         android:id="@+id/listName"
@@ -31,6 +32,6 @@
         android:layout_toRightOf="@+id/listImage"
         android:text="Position Goes her"
         android:textSize="14sp" />
-    
+
 
 </RelativeLayout>
