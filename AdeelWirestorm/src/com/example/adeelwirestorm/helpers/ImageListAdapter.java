@@ -135,7 +135,7 @@ public class ImageListAdapter extends BaseAdapter implements ImageExtender {
 								image);
 					else
 						return true;
-				} else if (url[0].contains("-lrg.jgp")) {
+				} else if (url[0].contains("-lrg.jpg")) {
 					String filename = url[0]
 							.substring(url[0].lastIndexOf('/') + 1);
 					if (!storeImage.isFileExist(filename))

@@ -20,7 +20,7 @@ public class LoadFeedData extends AsyncTask<String, Integer, List<Person>> {
 
 	private static boolean _connectionStatus;
 
-	private static final String PERSON_URL = "http://s3-us-west-2.amazonaws.com/wirestorm/assets/response.json";
+	private static final String PERSON_URL = "https://s3-us-west-2.amazonaws.com/wirestorm/assets/response.json";
 
 	private final ImageListAdapter mAdapter;
 	private final boolean mRefresh;
