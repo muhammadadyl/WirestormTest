@@ -14,6 +14,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 public class LoadFeedData extends AsyncTask<String, Integer, List<Person>> {
 
@@ -59,6 +60,8 @@ public class LoadFeedData extends AsyncTask<String, Integer, List<Person>> {
 				} catch (JSONException e) {
 
 				}
+			}else{
+				Toast.makeText(this.mContext, "Failed to fetch service. Please try some time later", Toast.LENGTH_LONG).show();
 			} 
 		}
 		return new ArrayList<Person>();
