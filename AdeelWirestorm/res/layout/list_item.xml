@@ -31,5 +31,6 @@
         android:layout_toRightOf="@+id/listImage"
         android:text="Position Goes her"
         android:textSize="14sp" />
+    
 
 </RelativeLayout>
