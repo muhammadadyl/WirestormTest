@@ -33,7 +33,7 @@ public class MainActivity extends ListActivity {
 		Person person = (Person) adapter.getItem(position);
 		Log.i("Name", person.getName());
 		Intent personOnItemIntent = new Intent(MainActivity.this,
-				MainActivity.class);
+				PersonDetailsActivity.class);
 		personOnItemIntent.putExtra("person", person);
 		personOnItemIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 		startActivity(personOnItemIntent);

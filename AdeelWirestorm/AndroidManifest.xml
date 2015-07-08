@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.adeelwirestorm.Person_Details"
+            android:name="com.example.adeelwirestorm.PersonDetailsActivity"
             android:label="@string/title_activity_person__details" >
         </activity>
     </application>
