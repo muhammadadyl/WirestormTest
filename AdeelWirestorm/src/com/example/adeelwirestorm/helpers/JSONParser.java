@@ -26,7 +26,6 @@ import android.util.Log;
 public class JSONParser {
 
 	static InputStream is = null;
-	static JSONObject jObj = null;
 	String json = "";
 	final Context context;
 
@@ -37,7 +36,7 @@ public class JSONParser {
 
 	// function get json from url
 	// by making HTTP POST or GET mehtod
-	public JSONObject makeHttpRequest(String url, String method,
+	public String makeHttpRequest(String url, String method,
 			List<NameValuePair> params) {
 
 		// Making HTTP request
@@ -106,112 +105,9 @@ public class JSONParser {
 			Log.e("Buffer Error", "Error converting result " + e.toString());
 		}
 
-		// try parse the string to a JSON object
-		try {
-			jObj = new JSONObject(json);
-		} catch (JSONException e) {
-			Log.e("JSON Parser", "Error parsing data " + e.toString());
-		}
-
 		// return JSON String
-		return jObj;
+		return json;
 
 	}
 
-	public JSONObject makeHttpRequestPost(String url, JSONObject jsonObj) {
-
-		// Making HTTP request
-		try {
-			// request method is POST
-			// defaultHttpClient
-			DefaultHttpClient httpClient = new SecureClient(context);
-			HttpPost httpPost = new HttpPost(url);
-			httpPost.setHeader("Accept", "application/json");
-			httpPost.setHeader("Content-type", "application/json");
-			httpPost.setEntity(new StringEntity(jsonObj.toString(), HTTP.UTF_8));
-			Log.d("params", httpPost.getEntity().toString());
-			HttpResponse httpResponse = httpClient.execute(httpPost);
-			if (httpResponse.getStatusLine().getStatusCode() == 200) {
-				HttpEntity httpEntity = httpResponse.getEntity();
-				is = httpEntity.getContent();
-			}else{
-				return null;
-			}
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} catch (ClientProtocolException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(
-					is, "iso-8859-1"), 8);
-			StringBuilder sb = new StringBuilder();
-			String line = null;
-			while ((line = reader.readLine()) != null) {
-				sb.append(line + "\n");
-			}
-			is.close();
-			json = sb.toString();
-		} catch (Exception e) {
-			Log.e("Buffer Error", "Error converting result " + e.toString());
-		}
-
-		// try parse the string to a JSON object
-		try {
-			jObj = new JSONObject(json);
-		} catch (JSONException e) {
-			Log.e("JSON Parser", "Error parsing data " + e.toString());
-		}
-
-		// return JSON String
-		return jObj;
-	}
-
-	public JSONObject makeHttpRequestGet(String url, List<NameValuePair> params) {
-
-		// Making HTTP request
-		try {
-			// request method is GET
-			DefaultHttpClient httpClient = new SecureClient(context);
-			String paramString = URLEncodedUtils.format(params, "utf-8");
-			url += "?" + paramString;
-			HttpGet httpGet = new HttpGet(url);
-			HttpResponse httpResponse = httpClient.execute(httpGet);
-			HttpEntity httpEntity = httpResponse.getEntity();
-			is = httpEntity.getContent();
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} catch (ClientProtocolException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(
-					is, "iso-8859-1"), 8);
-			StringBuilder sb = new StringBuilder();
-			String line = null;
-			while ((line = reader.readLine()) != null) {
-				sb.append(line + "\n");
-			}
-			is.close();
-			json = sb.toString();
-		} catch (Exception e) {
-			Log.e("Buffer Error", "Error converting result " + e.toString());
-		}
-
-		// try parse the string to a JSON object
-		try {
-			jObj = new JSONObject(json);
-		} catch (JSONException e) {
-			Log.e("JSON Parser", "Error parsing data " + e.toString());
-		}
-
-		// return JSON String
-		return jObj;
-	}
 }

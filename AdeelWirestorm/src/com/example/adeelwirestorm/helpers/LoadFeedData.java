@@ -19,7 +19,7 @@ public class LoadFeedData extends AsyncTask<String, Integer, List<Person>> {
 
 	private static boolean _connectionStatus;
 
-	private static final String PERSON_URL = "https://s3-us-west-2.amazonaws.com/wirestorm/assets/response.json";
+	private static final String PERSON_URL = "http://s3-us-west-2.amazonaws.com/wirestorm/assets/response.json";
 
 	private final ImageListAdapter mAdapter;
 	private final boolean mRefresh;
@@ -37,11 +37,11 @@ public class LoadFeedData extends AsyncTask<String, Integer, List<Person>> {
 		if (_connectionStatus) {
 			JSONParser jsonParser = new JSONParser(mContext);
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
-			JSONObject json = jsonParser.makeHttpRequest(PERSON_URL, "GET",
+			String json = jsonParser.makeHttpRequest(PERSON_URL, "GET",
 					params);
 			if (json != null) {
 				try {
-						JSONArray jsonArray =  json.toJSONArray(null);
+						JSONArray jsonArray = new JSONArray(json);
 						List<Person> persons = new ArrayList<Person>();
 						if (jsonArray.length() > 0) {
 							for (int i = 0; i < jsonArray.length(); i++) {
@@ -51,7 +51,7 @@ public class LoadFeedData extends AsyncTask<String, Integer, List<Person>> {
 								person.setName(jsonItem.getString("name"));
 								person.setPosition(jsonItem.getString("position"));
 								person.setSmallPicUrl(jsonItem.getString("smallpic"));
-								person.setSmallPicUrl(jsonItem.getString("lrgpic"));
+								person.setLrgPicUrl(jsonItem.getString("lrgpic"));
 								persons.add(person);
 							}
 						}

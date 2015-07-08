@@ -33,7 +33,7 @@ public class PersonDetailsActivity extends Activity implements ImageExtender {
 
 		mImageDownloader = new ImageDownloader(this);
 
-		ImageView imageView = (ImageView) findViewById(R.id.lrgImage);
+		imageView = (ImageView) findViewById(R.id.lrgImage);
 		
 		String Url = person.getLrgPicUrl();
 		String FileName = Url.substring(Url.lastIndexOf("/") + 1);
